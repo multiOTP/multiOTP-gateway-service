@@ -1,0 +1,42 @@
+default:
+  cache:
+    paths:
+      - vendor/
+  before_script:
+    # Install composer dependencies hop
+    - cd src/push
+    - wget https://composer.github.io/installer.sig -O - -q | tr -d '\n' > installer.sig
+    - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    - php -r "if (hash_file('SHA384', 'composer-setup.php') === file_get_contents('installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    - php composer-setup.php
+    - php -r "unlink('composer-setup.php'); unlink('installer.sig');"
+    - php composer.phar install
+
+stages:
+  - pre
+  - lint
+  - test
+
+phpstan:
+  stage: test
+  image: php:cli
+  script:
+    - phpstan analyse --level=6 --memory-limit=1G --no-progress .
+
+phpcsPHP:
+  stage: lint
+  image: php:cli
+  script:
+    - phpcs --standard=PHPCompatibility --ignore=*/vendor/*,*/tests/*,*/bootstrap/*,*/routes/console.php,*/resources/views/welcome.blade.php,*/public/index.php .
+
+phpcsPSR12:
+  stage: lint
+  image: php:cli
+  script:
+    - phpcs --standard=PSR12 --ignore=*/vendor/*,*/tests/*,*/bootstrap/*,*/routes/console.php,*/resources/views/welcome.blade.php,*/public/index.php .
+
+php_l:
+  stage: pre
+  image: php:cli
+  script:
+    - find . -not -path "./vendor/*" -name "*php" -exec php -l {} \;

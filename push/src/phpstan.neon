@@ -1,0 +1,8 @@
+parameters:
+    level: 6
+    excludePaths:
+        - vendor/*
+        - tests/*
+        - bootstrap/*
+        - routes/console.php ?
+        - resources/views/welcome.blade.php
