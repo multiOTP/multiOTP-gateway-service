@@ -7,6 +7,9 @@ https://www.multiotp.net/
 
 Current build: 5.10.2.3 (2026-04-04)
 
+[![Donate via PayPal](https://img.shields.io/badge/donate-paypal-87ceeb.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&currency_code=USD&business=paypal@sysco.ch&item_name=Donation%20for%20multiOTP%20project)
+*Please consider supporting this project by making a donation via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&currency_code=USD&business=paypal@sysco.ch&item_name=Donation%20for%20multiOTP%20project)*
+
 In order to use push notification with the open source version of multiOTP, you will have to run your own multiOTP gateway service, and you will have also to compile your own multiOTP token App for Android and iOS, as you will have to use your own Google or Apple keys in order to send notifications.
 
 # .env config file
