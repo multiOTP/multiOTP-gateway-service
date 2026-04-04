@@ -5,7 +5,7 @@ multiOTP gateway service is an open source gateway to send push notification fro
 (c) 2025-2026 SysCo systemes de communication sa  
 https://www.multiotp.net/
 
-Current build: 5.10.2.0 (2026-01-30)
+Current build: 5.10.2.3 (2026-04-04)
 
 In order to use push notification with the open source version of multiOTP, you will have to run your own multiOTP gateway service, and you will have also to compile your own multiOTP token App for Android and iOS, as you will have to use your own Google or Apple keys in order to send notifications.
 
